@@ -1,16 +1,22 @@
 <h1>List</h1>
 
-<ul>
+<table class="table">
 	<% @events.each do |event| %>
-		<li>
+		<tr>
+            <td>
 			<%= event.name %>
+            </td>
+            <td>
 			<%= event.description %>
-			<%= link_to 'Show', club_path(event) %>
-			<%= link_to 'Edit', edit_club_path(event) %>
-			<%= button_to 'Delete', club_path(event), :method => :delete, :data => {:confirm => "Are you sure?"} %>
-		</li>
+            </td>
+            <td>
+			<%= link_to 'Show', club_path(event), :class => "btn btn-primary" %>
+			<%= link_to 'Edit', edit_club_path(event), :class => "btn btn-default" %>
+			<%= link_to 'Delete', club_path(event), :method => :delete, :data => {:confirm => "Are you sure?"}, :class => "btn btn-danger" %>
+            </td>
+		</tr>
 	<% end %>
-</ul>
+</table>
 
 <%= link_to 'New Event', new_club_path %>
 <%= paginate @events %>

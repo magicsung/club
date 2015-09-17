@@ -4,6 +4,13 @@
 <%= f.label :description, "Description" %>
 <%= f.text_area :description %>
 
+<%= f.label :hours, "hours" %>
+<%= f.text_area :hours %>
+
+<%= f.label :rank, "rank" %>
+<%= f.text_area :rank %>
+
+
 <% if @event.errors.any? %>
 	<ul>
 		<% @event.errors.full_messages.each do |msg| %>

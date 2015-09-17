@@ -1,4 +1,7 @@
-<%= @event.name %>
-<%= simple_format(@event.description) %>
+<%= simple_format @event.name %>
+<%= simple_format @event.description %>
+<%= simple_format @event.hours %>
+<%= simple_format @event.created_at.to_s %>
+<%= simple_format @event.rank.to_s %>
 
 <p><%= link_to 'Back to index', clubs_path %></p>
