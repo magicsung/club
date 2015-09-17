@@ -1,4 +1,4 @@
-<%= form_for @event, :url => { :controller => 'clubs', :action => 'update', :id => @event } do |f| %>
+<%= form_for @event, :url => club_path(@event), :method => :patch do |f| %>
 	
 	<%= render :partial => 'form', :locals => { :f => f } %>
 

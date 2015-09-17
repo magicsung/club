@@ -1,14 +1,16 @@
 <h1>List</h1>
 
 <ul>
-<% @events.each do |event| %>
-  <li>
- 	  <%= event.name %>
-  <%= link_to 'Show', :controller => 'clubs', :action => 'show', :id => event %>
-  <%= link_to 'Edit', :controller => 'clubs', :action => 'edit', :id => event %>
-  <%= link_to 'Delete', :controller => 'clubs', :action => 'destroy', :id => event %>
-  </li>
-<% end %>
+	<% @events.each do |event| %>
+		<li>
+			<%= event.name %>
+			<%= event.description %>
+			<%= link_to 'Show', club_path(event) %>
+			<%= link_to 'Edit', edit_club_path(event) %>
+			<%= button_to 'Delete', club_path(event), :method => :delete, :data => {:confirm => "Are you sure?"} %>
+		</li>
+	<% end %>
 </ul>
-<%= link_to 'New Event', :controller => 'clubs', :action => 'new' %>
+
+<%= link_to 'New Event', new_club_path %>
 <%= paginate @events %>

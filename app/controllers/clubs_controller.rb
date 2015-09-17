@@ -18,7 +18,7 @@ class ClubsController < ApplicationController
 		flash[:notice] = "info was successfully updated"
 
   		if @event.update(event_params)
-			redirect_to :action => :show, :id => @event
+			redirect_to club_url(@event)
 		else
 			render :action => :edit
 		end
@@ -42,7 +42,7 @@ class ClubsController < ApplicationController
 		@event = Event.new(event_params)
 
 		if @event.save
-	    	redirect_to :action => :index
+	    	redirect_to clubs_url
 		else
 	    	render :action => :new
 	    end
