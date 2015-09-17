@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
-  get "club" => "club#index"
-  root :to => "club#index"
+  get "clubs" => "clubs#index"
+  root :to => "clubs#index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
