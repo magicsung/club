@@ -3,4 +3,13 @@
 	<%= render :partial => 'form', :locals => { :f => f } %>
 
     <%= f.submit "Update", :class => "btn btn-primary" %>
+    
+<% end %>
+
+<% if @event.errors.any? %>
+    <ul>
+        <% @event.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+        <% end %>
+    </ul>
 <% end %>

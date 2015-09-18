@@ -5,6 +5,14 @@ class ClubsController < ApplicationController
 	def index
   		@events = Event.all
   		@events = Event.page(params[:page]).per(5)
+
+  		if params[:edit]
+  			@edit_event = Event.find(params[:edit])
+  		end
+
+  		if params[:new]
+  			@new_event = Event.new  			
+  		end
 	end
 
 	def show
@@ -18,9 +26,9 @@ class ClubsController < ApplicationController
 		flash[:notice] = "info was successfully updated"
 
   		if @event.update(event_params)
-			redirect_to club_url(@event)
+			redirect_to clubs_url(@event, :page => params[:page] )
 		else
-			render :action => :edit
+			redirect_to clubs_url #:action => :edit
 		end
 	end
 
@@ -29,7 +37,7 @@ class ClubsController < ApplicationController
 
 		@event.destroy
 
-		redirect_to :action => :index
+		redirect_to :back
 	end
 
 	def new

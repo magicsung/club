@@ -1,22 +1,49 @@
-<h1>List</h1>
+<a href="/"><h1>List</h1></a>
 
 <table class="table">
 	<% @events.each do |event| %>
 		<tr>
             <td>
-			<%= event.name %>
+			 <%= event.name %>
             </td>
             <td>
-			<%= event.description %>
+			 <%= event.description %>
             </td>
             <td>
-			<%= link_to 'Show', club_path(event), :class => "btn btn-primary" %>
-			<%= link_to 'Edit', edit_club_path(event), :class => "btn btn-default" %>
-			<%= link_to 'Delete', club_path(event), :method => :delete, :data => {:confirm => "Are you sure?"}, :class => "btn btn-danger" %>
+    			<%= link_to 'Show', club_path(event), :class => "btn btn-primary" %>
+    			
+                <!-- link_to 'Edit', edit_club_path(event), :class => "btn btn-default" -->
+                <%= link_to 'Edit', clubs_path(:edit => event, :page => params[:page]), :class => "btn btn-default" %>
+                
+
+    			<%= link_to 'Delete', club_path(event), :method => :delete, :data => {:confirm => "Are you sure?"}, :class => "btn btn-danger" %>
             </td>
 		</tr>
 	<% end %>
 </table>
 
-<%= link_to 'New Event', new_club_path %>
+<%#= link_to 'New Event', new_club_path, :class => "btn btn-primary" %>
+<%= link_to 'New Event', clubs_path(:new => "new", :page => params[:page]), :class => "btn btn-primary" %>
 <%= paginate @events %>
+
+
+
+<!-- NEW -->
+<% if @new_event %>
+    <%= form_for @new_event, :url => clubs_path, :class => "form" do |f| %>
+        <%= render :partial => 'form', :locals => { :f => f } %>
+        <%= f.submit "Create", :class => "btn btn-primary" %>
+    <% end %>
+<% end %>
+<!-- NEW -->
+
+<!-- EDIT -->
+<% if @edit_event %>
+    <%= form_for @edit_event, :url => club_path(@edit_event), :method => :patch do |f| %>
+        <%= render :partial => 'form', :locals => { :f => f } %>
+        <%= f.submit "Update", :class => "btn btn-primary" %>
+    <% end %>
+<% end %>
+<!-- EDIT -->
+
+

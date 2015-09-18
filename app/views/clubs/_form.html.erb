@@ -1,3 +1,5 @@
+<%= hidden_field_tag :page, params[:page] %>
+
 <div class="form-group">
     <%= f.label :name, "Name" %>
     <%= f.text_field :name, :class => "form-control" %>
@@ -16,10 +18,15 @@
 </div>
 
 
+
+<% if false %>
+
 <% if @event.errors.any? %>
-	<ul>
-		<% @event.errors.full_messages.each do |msg| %>
-			<li><%= msg %></li>
-		<% end %>
-	</ul>
+    <ul>
+        <% @event.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+        <% end %>
+    </ul>
+<% end %>
+
 <% end %>

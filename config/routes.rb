@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
 
-  get "clubs" => "clubs#index"
   root :to => "clubs#index"
 
   resources :clubs
