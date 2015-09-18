@@ -2,7 +2,7 @@
 
 <div class="form-group">
     <%= f.label :name, "Name" %>
-    <%= f.text_field :name, :class => "form-control" %>
+    <%= f.text_field :name, :required => true, :class => "form-control" %>
 </div>
 <div class="form-group">
     <%= f.label :Description, "Description" %>
@@ -14,9 +14,12 @@
 </div>
 <div class="form-group">
     <%= f.label :rank, "rank" %>
-    <%= f.text_area :rank, :class => "form-control" %>
+    <%=  f.number_field :rank, :class => "form-control" %>
 </div>
-
+<div class="form-group">
+    <%= f.label :created_at, "created_at" %>
+    <%=  f.date_select :created_at, :class => "form-control" %>
+</div>
 
 
 <% if false %>
