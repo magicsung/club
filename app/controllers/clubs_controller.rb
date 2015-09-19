@@ -51,7 +51,7 @@ class ClubsController < ApplicationController
 	    	redirect_to clubs_url(:page => params[:page])
 		else
 			@events = Event.page(params[:page]).per(5)
-	    	render :action => "index"
+			render "index"
 	    end
 	end
 
